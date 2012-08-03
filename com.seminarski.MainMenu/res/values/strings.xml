@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hello World, Pocetni_Meni!</string>
+	<string name="app_name">Vezba</string>
+	<string name="btnPocetniMeni">Novi prozor</string>
+	<string-array name="gesture_views">
+		<item>gesture11</item>
+		<item>gesture12</item>
+		<item>gesture13</item>
+		<item>gesture21</item>
+		<item>gesture22</item>
+		<item>gesture23</item>
+		<item>gesture31</item>
+		<item>gesture32</item>
+		<item>gesture33</item>
+	</string-array>
+
+</resources>

@@ -1,0 +1,22 @@
+
+    <TableLayout android:id="@+id/tableLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+        <Button android:text="Nova igra" 
+        android:id="@+id/nova_igra" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="bottom"
+        >
+        </Button>
+        <Button android:text="Prikljuci se" 
+        android:id="@+id/prikljuci_se" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content">
+        </Button>
+        <Button android:text="Izadji" 
+        android:id="@+id/izadji" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content">
+        </Button>
+    </TableLayout>
+
