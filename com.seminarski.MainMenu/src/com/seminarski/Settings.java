@@ -1,11 +1,7 @@
 package com.seminarski;
 
-import com.seminarski.R;
-import com.seminarski.komunikacija.BluetoothCommunication;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.gesture.GestureOverlayView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;

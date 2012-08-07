@@ -1,10 +1,6 @@
 package com.seminarski;
 
 import util.Util;
-
-import com.seminarski.komunikacija.BluetoothClient;
-import com.seminarski.komunikacija.BluetoothServerThread;
-
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -30,8 +26,6 @@ public class BluetoothDiscovery extends Activity {
 	private ArrayAdapter<String> listOfDevices;
 
 	private BluetoothAdapter bluetoothAdapter;
-
-	private ArrayAdapter<String> nekiNizReci;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

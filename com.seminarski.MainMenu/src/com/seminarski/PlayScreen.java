@@ -1,16 +1,25 @@
 package com.seminarski;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.security.auth.PrivateCredentialPermission;
-
 import util.Util;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.gesture.Gesture;
+import android.gesture.GestureLibraries;
+import android.gesture.GestureLibrary;
+import android.gesture.GestureOverlayView;
+import android.gesture.GestureOverlayView.OnGesturePerformedListener;
+import android.gesture.Prediction;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.seminarski.R;
-import com.seminarski.domen.Matrica;
-import com.seminarski.domen.PoljeTable;
 import com.seminarski.domen.Znak;
 import com.seminarski.komunikacija.BluetoothClient;
 import com.seminarski.komunikacija.BluetoothCommunication;
@@ -18,34 +27,6 @@ import com.seminarski.komunikacija.BluetoothServerThread;
 import com.seminarski.logika.Igra;
 import com.seminarski.transfer.TransferObject;
 import com.seminarski.transfer.TransferObjectWrapper;
-
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.gesture.Gesture;
-import android.gesture.GestureLibraries;
-import android.gesture.GestureLibrary;
-import android.gesture.GestureOverlayView;
-import android.gesture.GestureOverlayView.OnGesturePerformedListener;
-import android.gesture.Prediction;
-import android.graphics.Color;
-import android.location.Address;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.view.Display;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 public class PlayScreen extends Activity implements OnGesturePerformedListener {
 	/** Called when the activity is first created. */

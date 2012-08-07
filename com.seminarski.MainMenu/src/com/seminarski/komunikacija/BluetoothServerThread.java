@@ -1,10 +1,6 @@
 package com.seminarski.komunikacija;
 
-import java.io.IOException;
-import java.util.UUID;
-
 import util.Util;
-
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;

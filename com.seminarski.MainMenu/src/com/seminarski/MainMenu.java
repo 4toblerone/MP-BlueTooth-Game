@@ -1,9 +1,6 @@
 package com.seminarski;
 
-import javax.xml.validation.TypeInfoProvider;
-
 import util.Util;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;

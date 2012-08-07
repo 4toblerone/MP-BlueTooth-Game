@@ -2,7 +2,6 @@ package com.seminarski.transfer;
 
 import java.io.Serializable;
 
-import com.seminarski.domen.PoljeTable;
 import com.seminarski.domen.Znak;
 
 public class TransferObject implements Serializable {
