@@ -12,7 +12,7 @@ public class Util {
 	
 	public static final String APP_NAME = "XOX";
 	
-	public static final UUID APP_UUID = UUID.fromString("1687c175-7c68-4ca6-b117-30875b35e78d");
+	public static final UUID APP_UUID = UUID.fromString("2f2e6f10-e20d-11e1-9b23-0800200c9a66");
 	
 	public static final String EXTRA_DEVICE_ADDRESS = "device_address";
 	

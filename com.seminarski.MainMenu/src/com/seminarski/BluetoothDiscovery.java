@@ -1,6 +1,7 @@
 package com.seminarski;
 
 import util.Util;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+@SuppressLint("ParserError")
 public class BluetoothDiscovery extends Activity {
 
 	
@@ -75,8 +77,9 @@ public class BluetoothDiscovery extends Activity {
 			bluetoothAdapter.cancelDiscovery();
 			Intent intent = new Intent(BluetoothDiscovery.this, PlayScreen.class);
 			Bundle bundle = new Bundle();
-			bundle.putString(Util.TYPE_OF_START, Util.JOIN_GAME);
+			bundle.putString(Util.TYPE_OF_START, Util.JOIN_GAME );
 			bundle.putString(Util.EXTRA_DEVICE_ADDRESS, address);
+			intent.putExtras(bundle);
 			BluetoothDiscovery.this.startActivity(intent);			
 			
 			//intent.putExtra(Util.EXTRA_DEVICE_ADDRESS, address);
@@ -95,9 +98,10 @@ public class BluetoothDiscovery extends Activity {
 				
 				BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
 				
-				if(device.getBondState() != BluetoothDevice.BOND_BONDED){
+				/*if(device.getBondState() == BluetoothDevice.BOND_BONDED){
 					listOfDevices.add(device.getName()+"\n"+device.getAddress());
-				}
+				}*/
+				listOfDevices.add(device.getName()+"\n"+device.getAddress());
 			}
 			
 			else if(BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action))

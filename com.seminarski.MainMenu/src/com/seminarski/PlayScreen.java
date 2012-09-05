@@ -17,6 +17,7 @@ import android.gesture.Prediction;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -89,14 +90,20 @@ public class PlayScreen extends Activity implements OnGesturePerformedListener {
 			e.printStackTrace();
 		}
 
-		progressdialog = ProgressDialog.show(PlayScreen.this,
-				"Ceka se drugi igrac", "Molimo sacekajte");
+		
 
 		povezivanje();
+		progressdialog = ProgressDialog.show(PlayScreen.this,
+				"Ceka se drugi igrac", "Molimo sacekajte");
+		
+	
 
 	}
+	
+	
 
-	private void povezivanje() {
+	private synchronized void povezivanje() {
+		
 
 		final Handler handler = new Handler() {
 
@@ -126,14 +133,22 @@ public class PlayScreen extends Activity implements OnGesturePerformedListener {
 								.getInstanceOfBluetoothKomunikacijaNit(null)
 								.getTransferObjekat());
 						// play/draw a move on board
-						drawAndMarkMove(tow);
+						//drawAndMarkMove(tow);
+						
+						runOnUiThread(new Runnable() {
+						     public void run() {
+
+						//stuff that updates ui
+						    	 drawAndMarkMove(tow);
+						    }
+						});
 					}
 				};
 
 			}.start();
 
 		}
-		if (bundle.getString(Util.TYPE_OF_START).equalsIgnoreCase(
+		else if (bundle.getString(Util.TYPE_OF_START).equalsIgnoreCase(
 				Util.NEW_GAME_ONE_PHONE)) {
 
 			handler.sendEmptyMessage(0);
@@ -150,6 +165,21 @@ public class PlayScreen extends Activity implements OnGesturePerformedListener {
 					btClient.connect();
 					handler.sendEmptyMessage(0);
 					// here has to go
+					
+					while (true) {
+						tow.setTransferObject(BluetoothCommunication
+								.getInstanceOfBluetoothKomunikacijaNit(null)
+								.getTransferObjekat());
+						// play/draw a move on board
+						
+						runOnUiThread(new Runnable() {
+						     public void run() {
+
+						//stuff that updates ui
+						    	 drawAndMarkMove(tow);
+						    }
+						});
+					}
 				};
 			}.start();
 		}
@@ -180,7 +210,7 @@ public class PlayScreen extends Activity implements OnGesturePerformedListener {
 		ImageView imageView = (ImageView) findViewById(imageViewId);
 		igra.getMatrica_table()[coorX - 1][coorY - 1].Obelezi(tow
 				.getTransferObject().getZnak());
-		igra.iscrtajIksIliOks(this, imageView, tow.getTransferObject()
+		igra.iscrtajIksIliOks(PlayScreen.this, imageView, tow.getTransferObject()
 				.getZnak());
 		igra.proveriPobedu();
 	}
@@ -209,7 +239,8 @@ public class PlayScreen extends Activity implements OnGesturePerformedListener {
 		to.setPotezOdigran(true);
 		TransferObjectWrapper tow = new TransferObjectWrapper();
 		tow.setTransferObject(to);
-		drawAndMarkMove(tow);
+		drawAndMarkMove(tow); // now app will draw move played by player
+		BluetoothCommunication.getInstanceOfBluetoothKomunikacijaNit(null).sendTO(to); //and that move should be sent to second player
 	}
 
 	private Znak odrediZnak(Prediction prediction) {
